@@ -214,9 +214,9 @@ healthcare-api/
 │   ├── config/
 │   │   └── database.js
 │   ├── controllers/
-│   │   ├── authController.js
-│   │   ├── patientController.js
-│   │   └── caregiverController.js
+│   │   ├── 
+│   │   ├── 
+│   │   
 │   ├── middleware/
 │   │   └── auth.js
 │   ├── models/
