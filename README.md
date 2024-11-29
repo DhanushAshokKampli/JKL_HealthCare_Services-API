@@ -258,3 +258,47 @@ Project Link: [https://github.com/yourusername/healthcare-api](https://github.co
 * Express.js
 * MySQL
 * Security Best Practices
+* Here is a concise README file for the provided authentication code and API endpoints:
+
+# Healthcare System API
+
+This API provides authentication and administrative functionality for a healthcare system.
+
+## Authentication
+
+- **Login**: `POST /api/auth/login`
+- **Register Patient**: `POST /api/auth/register/patient` 
+- **Register Caregiver**: `POST /api/auth/register/caregiver`
+
+## Admin Dashboard
+- **Get Dashboard Counts**: `GET /api/admin/dashboard/counts`
+- **Get Dashboard Stats**: `GET /api/admin/dashboard/stats`
+
+## Admin Assignments
+- **Get Available for Assignment**: `GET /api/admin/assignments/available`
+- **Create Assignment**: `POST /api/admin/assignments`
+- **Get Recent Assignments**: `GET /api/admin/assignments/recent`
+- **Update Assignment Status**: `PUT /api/admin/assignments/:id/status`
+- **Assign Caregiver to Patient**: `POST /api/admin/assignments/assign`
+- **Get All Assignments**: `GET /api/admin/assignments/all`
+
+## Admin Patients
+- **Get Patient by ID**: `GET /api/admin/patients/:id`
+- **Create Patient**: `POST /api/admin/patients`
+- **Get All Patients**: `GET /api/admin/patients`
+
+## Admin Caregivers
+- **Get All Caregivers**: `GET /api/admin/caregivers`
+
+## Patient Routes
+- **Get Own Profile**: `POST /api/patients/profile`
+- **Get Own Appointments**: `POST /api/patients/appointments`
+- **Update Profile**: `PUT /api/patients/profile/update`
+- **Delete Account**: `POST /api/patients/profile/delete`
+
+## Caregiver Routes
+- **Get Own Profile**: `POST /api/caregivers/profile`
+- **Get Own Appointments**: `POST /api/caregivers/appointments`
+
+## Database
+The API uses a `healthcare_db` database.
