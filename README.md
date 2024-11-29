@@ -302,3 +302,72 @@ This API provides authentication and administrative functionality for a healthca
 
 ## Database
 The API uses a `healthcare_db` database.
+## Database Schema
+
+The `healthcare_db` database has the following schema:
+
+**Users Table**
+- `id` (integer, primary key)
+- `firstName` (string)
+- `lastName` (string)
+- `email` (string, unique)
+- `password` (string, hashed)
+- `role` (string, enum: 'admin', 'patient', 'caregiver')
+- `createdAt` (timestamp)
+- `updatedAt` (timestamp)
+
+**Assignments Table** 
+- `id` (integer, primary key)
+- `patientId` (integer, foreign key referencing Users table)
+- `caregiverId` (integer, foreign key referencing Users table) 
+- `status` (string, enum: 'pending', 'active', 'completed')
+- `createdAt` (timestamp)
+- `updatedAt` (timestamp)
+
+**Appointments Table**
+- `id` (integer, primary key)
+- `patientId` (integer, foreign key referencing Users table)
+- `caregiverId` (integer, foreign key referencing Users table)
+- `date` (datetime)
+- `status` (string, enum: 'scheduled', 'completed', 'cancelled')
+- `createdAt` (timestamp)
+- `updatedAt` (timestamp)
+
+## API Endpoints
+
+The API has the following endpoints:
+
+### Authentication
+- **Login**: `POST /api/auth/login`
+- **Register Patient**: `POST /api/auth/register/patient`
+- **Register Caregiver**: `POST /api/auth/register/caregiver`
+
+### Admin Dashboard
+- **Get Dashboard Counts**: `GET /api/admin/dashboard/counts`
+- **Get Dashboard Stats**: `GET /api/admin/dashboard/stats`
+
+### Admin Assignments
+- **Get Available for Assignment**: `GET /api/admin/assignments/available`
+- **Create Assignment**: `POST /api/admin/assignments`
+- **Get Recent Assignments**: `GET /api/admin/assignments/recent`
+- **Update Assignment Status**: `PUT /api/admin/assignments/:id/status`
+- **Assign Caregiver to Patient**: `POST /api/admin/assignments/assign`
+- **Get All Assignments**: `GET /api/admin/assignments/all`
+
+### Admin Patients
+- **Get Patient by ID**: `GET /api/admin/patients/:id`
+- **Create Patient**: `POST /api/admin/patients`
+- **Get All Patients**: `GET /api/admin/patients`
+
+### Admin Caregivers
+- **Get All Caregivers**: `GET /api/admin/caregivers`
+
+### Patient Routes
+- **Get Own Profile**: `POST /api/patients/profile`
+- **Get Own Appointments**: `POST /api/patients/appointments`
+- **Update Profile**: `PUT /api/patients/profile/update`
+- **Delete Account**: `POST /api/patients/profile/delete`
+
+### Caregiver Routes
+- **Get Own Profile**: `POST /api/caregivers/profile`
+- **Get Own Appointments**: `POST /api/caregivers/appointments`
